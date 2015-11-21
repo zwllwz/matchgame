@@ -13,18 +13,6 @@ body {
 
 }
 
-.close-btn {
-    border: 1px;
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    font-size: 60px;
-    padding-left: 0px;
-    position: fixed;
-    right: 0px;
-    top: 85px;
-}
-
 li {
   padding: 0;
   float: left;

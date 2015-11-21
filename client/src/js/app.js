@@ -1,4 +1,3 @@
-var gm = require('../js/gm.js');
 var ImageStore = require('../js/imageStore.js');
 var Game = require('../js/game.js');
 
@@ -45,7 +44,7 @@ function imageGuessing(imgIndex) {
         setTimeout(function () {
           renderImages();
           list = [];
-        }, 1000);
+        }, 900);
       }
     );
   } 
@@ -60,7 +59,6 @@ function init() {
 
 var cardie = window.cardie = window.cardie || {};
 cardie.init = init;
-cardie.closeApp = gm.closeApp;
 cardie.imageGuessing = imageGuessing;
 cardie.createDisplayContent = createDisplayContent;
 
