@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>GM pAPI Test App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="test.css" type="text/css" />
+    <script type="text/javascript" src='./bundle.js'></script>>
+    <!-- // <script src="http://172.17.0.2:8080/target/target-script-min.js#anonymous"></script> -->
+</head>
+
+<body>
+    <div id="game-container">
+        <h1 class="title" onclick='cardie.init()'>start over</h1> 
+        <div onclick='cardie.closeApp()' class='close-btn'>X</div>
+        <div id="container">
+            <ul>
+                <li onclick="cardie.imageGuessing(0)"><img src="#" id="image0" /></li>
+                <li onclick="cardie.imageGuessing(1)"><img src="#" id="image1" /></li>
+                <li onclick="cardie.imageGuessing(2)"><img src="#" id="image2" /></li>
+                <li onclick="cardie.imageGuessing(3)"><img src="#" id="image3" /></li>
+                <li onclick="cardie.imageGuessing(4)"><img src="#" id="image4" /></li>
+                <li onclick="cardie.imageGuessing(5)"><img src="#" id="image5" /></li>
+                <li onclick="cardie.imageGuessing(6)"><img src="#" id="image6" /></li>
+                <li onclick="cardie.imageGuessing(7)"><img src="#" id="image7" /></li>
+            </ul>
+        </div>       
+    </div>
+
+    <script>cardie.init()</script>
+</body>
+
+</html>

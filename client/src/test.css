@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+    padding-top: 70px;
+    margin: 0;
+}
+#game-container {
+    background-color: #eee;
+    height: 394px;
+}
+
+.title {
+    font-size: 1.5em;
+
+}
+
+.close-btn {
+    border: 1px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 60px;
+    padding-left: 0px;
+    position: fixed;
+    right: 0px;
+    top: 85px;
+}
+
+li {
+  padding: 0;
+  float: left;
+  margin: 10px;
+  list-style: none;
+  outline: solid;
+  width: 150px;
+  height: 150px;
+}
+
+img { 
+  width: 100%;
+  height: 100%;
+}
