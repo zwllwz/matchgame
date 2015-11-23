@@ -6,6 +6,14 @@ var del = require('del');
 var source = require('vinyl-source-stream');
 var _ = require('lodash');
 var browserSync = require('browser-sync');
+var jshint = require('gulp-jshint');
+
+
+gulp.task('lint',  function () {
+  return gulp.src('src/js/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));//install jshint-stylish as a dependency
+});
 
 
 var config = {
@@ -46,7 +54,6 @@ gulp.task('watchify', ['clean'], function () {
     bundle_js(bundler);
   })
 });
-
 
 
 // WEB SERVER
