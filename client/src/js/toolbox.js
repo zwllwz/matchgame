@@ -1,4 +1,4 @@
-var randomizeImages = function (images) {
+export function randomizeImages(images) {
   Array.prototype.randomize = function()
     {
       var i = this.length;
@@ -13,10 +13,11 @@ var randomizeImages = function (images) {
       }
   };
   images.randomize();
-};
+}
 
 
-module.exports = {
-  randomizeImages: randomizeImages
-};
+
+// module.exports = {
+//   randomizeImages: randomizeImages
+// };
 

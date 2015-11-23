@@ -1,4 +1,5 @@
-var _ = require('../js/toolbox.js');
+// var _ = require('../js/toolbox.js');
+import {randomizeImages} from "../js/toolbox.js";
 
 // n: number of image pairs in this image store
 var ImageStore = function(n) {
@@ -14,7 +15,7 @@ var ImageStore = function(n) {
       this.images.push(imageObject);
       this.images.push(imageObject);
     }
-    _.randomizeImages(this.images);
+    randomizeImages(this.images);
     return this.images;
   };
 

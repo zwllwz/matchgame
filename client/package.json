@@ -1,25 +1,27 @@
 {
-  "name": "match-game",
+  "name": "es6-6to5-browserify-boilerplate",
   "version": "0.0.0",
-  "description": "game",
-  "main": "test.js",
-  "author": "",
-  "license": "",
+  "description": "A repo to play with ES6++",
+  "homepage": "https://github.com/thoughtram/es6-6to5-browserify-boilerplate",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thoughtram/es6-6to5-browserify-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thoughtram/es6-6to5-browserify-boilerplate/issues"
+  },
   "devDependencies": {
-    "launch-ihu": "git+ssh://git@onsrnd1adc-st01.itlab.onstar.gm.com:7999/ihum/launch-ihu.git",
-    "gulp": "^3.8.10",
-    "gulp-jshint": "^1.9.0",
-    "gulp-load-plugins": "^0.8.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-sftp": "^0.1.4",
-    "jshint-stylish": "~2.0.1",
-    "browserify": "^12.0.1",
-    "gulp-rename": "^1.2.2",
-    "vinyl-source-stream": "^1.1.0",
-    "clear": "0.0.1",
+    "babelify": "~5.0.3",
+    "browser-sync": "^1.7.1",
+    "browserify": "^6.3.3",
+    "gulp": "~3.9.0",
+    "gulp-rename": "^1.2.0",
+    "lodash": "^2.4.1",
+    "watchify": "^2.1.1",
+    "vinyl-source-stream": "^1.0.0",
+    "q": "^1.4.1",
     "del": "^2.1.0"
   },
-  "dependencies": {
-    "q": "^1.4.1"
-  }
+  "author": "Christoph Burgdorf <christoph@thoughtram.io>",
+  "license": "MIT"
 }

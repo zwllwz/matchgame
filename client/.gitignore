@@ -1,8 +1,4 @@
 node_modules
-bower_components
-**/*.swp
-**/*.swo
+dist
 .DS_Store
-coverage
 npm-debug.log
-src/bundle.js

@@ -1,57 +1,59 @@
-'use strict';
-
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var launchIhu = require('launch-ihu');
 var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+var babelify = require('babelify');
 var del = require('del');
+var source = require('vinyl-source-stream');
+var _ = require('lodash');
+var browserSync = require('browser-sync');
 
-var path = {
-  js: 'src/js/*.js',
-  dist: '/dist'
-}
 
+var config = {
+  entryFile: './src/js/app.js',
+  outputDir: './dist/',
+  outputFile: 'app.js'
+};
 
 gulp.task('clean', function () {
-  return del('src/bundle.js');
+  return del(config.outputDir);
+});
+
+function map_error(error) {
+  console.log("Error: " + error.message);
+}
+
+function bundle_js(bundler) {
+  return bundler.bundle()
+    .on('error', map_error)
+    .pipe(source(config.outputFile))
+    .pipe(gulp.dest(config.outputDir));
+}
+
+gulp.task('browserify', function () {
+  var bundler = browserify(config.entryFile, {debug: true}).transform(babelify);
+
+  return bundle_js(bundler);
+});
+
+
+gulp.task('watchify', ['clean'], function () {
+  var args = _.extend({debug: true}, watchify.args);
+  var bundler = watchify(browserify(config.entryFile, args)).transform(babelify);
+
+  bundle_js(bundler);
+
+  bundler.on('update', function () {
+    bundle_js(bundler);
+  })
 });
 
 
 
-gulp.task('jshint',  function () {
-  return gulp.src('src/js/*.js')
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('browserify', ['clean'], function () {
-  var bundler = browserify('src/js/app.js').bundle();
-  bundler.pipe(source('bundle.js'))
-      .pipe(gulp.dest('src/'));
-});
-
-
-gulp.task('deploy', function () {
-  return gulp.src('src/**')
-    .pipe($.sftp({
-      host: '172.17.0.1',
-      user: 'root',
-      pass: 'root',
-      timeout: 200000,
-      remotePath: '/var/opt/bosch/dynamic/internet/apps/421118567'
-    }));
-});
-
-gulp.task('connect', function () {
-  $.connect.server({
-    root: 'src',
-    port: 9000,
-    livereload: true
+// WEB SERVER
+gulp.task('serve', function () {
+  browserSync({
+    server: {
+      baseDir: './'
+    }
   });
-});
-
-gulp.task('build', ['clean', 'browserify', 'jshint']);
-gulp.task('serve', ['jshint', 'connect'], function () {
-  launchIhu();
 });

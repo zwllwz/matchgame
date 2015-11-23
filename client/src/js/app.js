@@ -5,6 +5,7 @@ var gameInstance;
 var cardArrayStore = [];
 var list = [];
 
+
 function renderImages() {
   for (var i = 0; i < gameInstance.imageStore.getAllImages().length; i++) {
     var imgElem = document.getElementById('image' + i);
