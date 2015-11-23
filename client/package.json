@@ -19,7 +19,6 @@
     "lodash": "^2.4.1",
     "watchify": "^2.1.1",
     "vinyl-source-stream": "^1.0.0",
-    "q": "^1.4.1",
     "del": "^2.1.0",
     "gulp-jshint": "^2.0.0",
     "jshint-stylish": "^2.1.0"

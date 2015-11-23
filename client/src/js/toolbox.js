@@ -15,9 +15,3 @@ export function randomizeImages(images) {
   images.randomize();
 }
 
-
-
-// module.exports = {
-//   randomizeImages: randomizeImages
-// };
-

@@ -1,44 +1,42 @@
-var q = require('q');
-var ImageStore = require('../js/imageStore.js');
+import {ImageStore} from "../js/imageStore";
 
+class Game {
+  constructor() {
+    this.imageStore = new ImageStore(4);
+    this.imageStore.initializeImages();
+    this.count = 0;
+    this.success = false;
+  }
+  
+  guess(card1Index, card2Index) {
+    var p  = new Promise((resolve, reject) => {
+      if (card2Index === card1Index) {
+          reject();
+        } else {
+          var card1 = this.imageStore.getImage(card1Index);
+          var card2 = this.imageStore.getImage(card2Index);
 
-var Game = function () {
-  this.imageStore = new ImageStore(4);
-  this.imageStore.initializeImages();
-  this.count = 0;
-  this.success = false;
+          if (card1.src === card2.src) {
+            card1.found = true;
+            card2.found = true;
+            this.count = this.count + 2;
+            this.guessingRightAllCards();
+            resolve();
+          } else {
+            reject();
+          } 
+        }
+    });
 
-  this.guess = function (card1Index, card2Index) {
-    var defer = q.defer();
-    if (card2Index === card1Index) {
-      defer.reject();
-    } else {
-      
-      var card1 = this.imageStore.getImage(card1Index);
-      var card2 = this.imageStore.getImage(card2Index);
+    return p;
+  }
 
-      if (card1.src === card2.src) {
-        card1.found = true;
-        card2.found = true;
-        this.count = this.count + 2;
-        this.guessingRightAllCards();
-        defer.resolve();
-      } else {
-        defer.reject();
-      } 
-    }
-
-
-    return defer.promise;
-  };
-
-  this.guessingRightAllCards = function () {
+  guessingRightAllCards() {
     if (this.count === this.imageStore.getAllImages().length) {
       this.success = true;
     } 
-  };
-};
+  }
+}
 
-
-module.exports = Game;
+export {Game};
 

@@ -1,12 +1,13 @@
-// var _ = require('../js/toolbox.js');
-import {randomizeImages} from "../js/toolbox.js";
+import {randomizeImages} from "../js/toolbox";
 
 // n: number of image pairs in this image store
-var ImageStore = function(n) {
-  this.images = [];
-  this.n = n;
-
-  this.initializeImages  = function () {
+class ImageStore {
+  constructor(n) {
+    this.images = [];
+    this.n = n;
+  }
+  
+  initializeImages() {
     for (var i = 1; i <=this.n; i ++) {
       var imageObject = {
         src: 'img/' + i + '.png',
@@ -17,20 +18,19 @@ var ImageStore = function(n) {
     }
     randomizeImages(this.images);
     return this.images;
-  };
+  }
 
-  this.getImage = function (index) {
+  getImage(index) {
     return this.images[index];
-  };
+  }
 
-  this.setImageFound = function (index) {
+  setImageFound(index) {
     this.images[index].found = true;
-  };
+  }
 
-  this.getAllImages = function () {
+  getAllImages() {
     return this.images;
-  };
-};
+  }
+}
 
-
-module.exports = ImageStore;
+export {ImageStore};

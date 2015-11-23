@@ -1,5 +1,4 @@
-var ImageStore = require('../js/imageStore.js');
-var Game = require('../js/game.js');
+import {Game} from "../js/game";
 
 var gameInstance;
 var cardArrayStore = [];
@@ -16,7 +15,6 @@ function renderImages() {
     }
   }
 }
-
 
 function show(imgIndex) {
   var imgElem = document.getElementById('image' + imgIndex);

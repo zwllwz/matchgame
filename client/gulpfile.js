@@ -18,8 +18,8 @@ gulp.task('lint',  function () {
 
 var config = {
   entryFile: './src/js/app.js',
-  outputDir: './dist/',
-  outputFile: 'app.js'
+  outputDir: './src/dist/',
+  outputFile: 'bundle.js'
 };
 
 gulp.task('clean', function () {
@@ -37,12 +37,11 @@ function bundle_js(bundler) {
     .pipe(gulp.dest(config.outputDir));
 }
 
-gulp.task('browserify', function () {
+gulp.task('browserify', ['clean'], function () {
   var bundler = browserify(config.entryFile, {debug: true}).transform(babelify);
 
   return bundle_js(bundler);
 });
-
 
 gulp.task('watchify', ['clean'], function () {
   var args = _.extend({debug: true}, watchify.args);
@@ -55,12 +54,13 @@ gulp.task('watchify', ['clean'], function () {
   })
 });
 
-
 // WEB SERVER
 gulp.task('serve', function () {
   browserSync({
     server: {
-      baseDir: './'
+      baseDir: './src/'
     }
   });
 });
+
+gulp.task('build', ['lint', 'clean', 'browserify']);
