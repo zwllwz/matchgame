@@ -5,7 +5,7 @@ var cardArrayStore = [];
 var list = [];
 
 function renderImages() {
-  for (var i = 0; i < gameInstance.imageStore.getAllImages().length; i++) {
+  for (let i = 0; i < gameInstance.imageStore.getAllImages().length; i++) {
     var imgElem = document.getElementById('image' + i);
     imgElem.setAttribute("src", gameInstance.imageStore.getImage(i).src);
     if (gameInstance.imageStore.getImage(i).found) {
@@ -17,7 +17,7 @@ function renderImages() {
 }
 
 function show(imgIndex) {
-  var imgElem = document.getElementById('image' + imgIndex);
+  let imgElem = document.getElementById('image' + imgIndex);
   imgElem.style.display = 'block';
 }
 
@@ -32,14 +32,14 @@ function imageGuessing(imgIndex) {
 
   if (list.length == 2) {
     gameInstance.guess(list[0], list[1]).then(
-      function () {
+      () => {
         gameInstance.imageStore.setImageFound(list[0]);
         gameInstance.imageStore.setImageFound(list[1]);
         renderImages();
         list = [];
       },
-      function () {
-        setTimeout(function () {
+      () => {
+        setTimeout(() => {
           renderImages();
           list = [];
         }, 900);

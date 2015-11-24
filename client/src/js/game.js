@@ -13,8 +13,8 @@ class Game {
       if (card2Index === card1Index) {
           reject();
         } else {
-          var card1 = this.imageStore.getImage(card1Index);
-          var card2 = this.imageStore.getImage(card2Index);
+          let card1 = this.imageStore.getImage(card1Index);
+          let card2 = this.imageStore.getImage(card2Index);
 
           if (card1.src === card2.src) {
             card1.found = true;

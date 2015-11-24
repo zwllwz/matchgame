@@ -8,8 +8,8 @@ class ImageStore {
   }
   
   initializeImages() {
-    for (var i = 1; i <=this.n; i ++) {
-      var imageObject = {
+    for (let i = 1; i <=this.n; i ++) {
+      let imageObject = {
         src: 'img/' + i + '.png',
         found: false
       };
